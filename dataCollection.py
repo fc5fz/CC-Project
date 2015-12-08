@@ -24,11 +24,16 @@ else:
     blockData = {}
 
 #range of blocks to download
-for i in range(384000, 385000):
+for i in range(375000, 380000):
+
     block = blockcypher.get_block_overview(i, api_key=api_key)
     blockData[i] = block
+    if i % 1000 == 0:
+        print('1000 done')
+
 
 
 file = open("data.txt", mode = "wb")
 pickle.dump(blockData,file)
 file.close()
+
